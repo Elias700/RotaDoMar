@@ -2,10 +2,10 @@
     <div class="container mx-auto flex items-center justify-between">
       <div class="flex items-center space-x-2">
         <img src="assets/images/logo.png" alt="Rota do Mar Logo" class="h-8 w-auto">
-        <span class="text-xl font-bold">Rota do Mar</span>
+        <span class="text-2xl font-bold">Rota do Mar</span>
       </div>
   
-      <nav class="hidden md:flex space-x-6">
+      <nav class="hidden md:flex space-x-6 [&>a]:text-2xl">
         <a href="#" class="hover:text-gray-200 transition-colors">Home</a>
         <a href="#" class="hover:text-gray-200 transition-colors">Praias</a>
         <a href="#" class="hover:text-gray-200 transition-colors">Mapa</a>
@@ -14,18 +14,12 @@
       </nav>
   
       <div class="hidden md:flex space-x-4">
-        <button class="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full hover:bg-gray-200 transition-colors">
+        <button class="bg-white text-blue-600 text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
           Login
         </button>
-        <button class="bg-transparent border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-blue-600 transition-colors">
+        <button class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-blue-600 transition-colors">
           Cadastre-se
         </button>
       </div>
-  
-      <button class="md:hidden text-white focus:outline-none">
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
     </div>
   </header>
