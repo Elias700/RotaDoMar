@@ -7,6 +7,8 @@ import { WeatherComponent } from './pages/weather/weather.component';
 import { BeachesComponent } from './pages/beaches/beaches.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { MapComponent } from './pages/map/map.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,9 @@ import { MapComponent } from './pages/map/map.component';
     WeatherComponent, 
     BeachesComponent,
     FeaturesComponent,
-    MapComponent
+    MapComponent,
+    LoginComponent,
+    CadastroComponent
   ], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

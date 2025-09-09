@@ -1,25 +1,25 @@
 <header class="bg-blue-600 text-white p-4 shadow-lg">
-    <div class="container mx-auto flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <img src="assets/images/logo.png" alt="Rota do Mar Logo" class="h-8 w-auto">
-        <span class="text-2xl font-bold">Rota do Mar</span>
-      </div>
-  
-      <nav class="hidden md:flex space-x-6 [&>a]:text-2xl">
-        <a href="#" class="hover:text-gray-200 transition-colors">Home</a>
-        <a href="#" class="hover:text-gray-200 transition-colors">Praias</a>
-        <a href="#" class="hover:text-gray-200 transition-colors">Mapa</a>
-        <a href="#" class="hover:text-gray-200 transition-colors">Previsão do Tempo</a>
-        <a href="#" class="hover:text-gray-200 transition-colors">Contato</a>
-      </nav>
-  
-      <div class="hidden md:flex space-x-4">
-        <button class="bg-white text-blue-600 text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
-          Login
-        </button>
-        <button class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-blue-600 transition-colors">
-          Cadastre-se
-        </button>
-      </div>
+  <div class="container mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <img src="assets/images/logo.png" alt="Rota do Mar Logo" class="h-8 w-auto">
+      <span class="text-2xl font-bold">Rota do Mar</span>
     </div>
-  </header>
+
+    <nav class="hidden md:flex space-x-6 [&>a]:text-2xl">
+      <a routerLink="/" class="hover:text-gray-200 transition-colors">Home</a>
+      <a routerLink="/praias" class="hover:text-gray-200 transition-colors">Praias</a>
+      <a routerLink="/mapa" class="hover:text-gray-200 transition-colors">Mapa</a>
+      <a routerLink="/previsao-do-tempo" class="hover:text-gray-200 transition-colors">Previsão do Tempo</a>
+      <a routerLink="/contato" class="hover:text-gray-200 transition-colors">Contato</a>
+    </nav>
+
+    <div class="hidden md:flex space-x-4">
+      <a routerLink="/login" class="bg-white text-blue-600 text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
+        Login
+      </a>
+      <a routerLink="/cadastro" class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-blue-600 transition-colors">
+        Cadastre-se
+      </a>
+    </div>
+  </div>
+</header>
