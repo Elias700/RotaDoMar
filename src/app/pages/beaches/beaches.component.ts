@@ -1,13 +1,16 @@
 // src/app/pages/beaches/beaches.component.ts
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { register } from 'swiper/element/bundle';
+register();
 
 @Component({
   selector: 'app-beaches',
   templateUrl: './beaches.component.html',
   styleUrls: ['./beaches.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BeachesComponent {
 
