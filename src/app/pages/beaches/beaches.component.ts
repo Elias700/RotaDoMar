@@ -90,7 +90,7 @@ export class BeachesComponent {
     {
       name: 'Praia de São Tomé de Paripe',
       image: 'https://s2-g1.glbimg.com/ciezn2_RS4XMqH6qAoBhfyvmlEc=/0x0:1700x1065/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/L/0/EtDyqaTXyIRnxxBzFbbw/img-6130.jpg',
-      description: 'Uma praia mais afastada, com águas calmas e ideal para famílias com crianças. Possui uma vista incrível para a Baía de Todos-os-Santos.',
+      description: 'Uma praia mais afastada, com águas calmas e ideal para famílias com crianças.',
       link: '#'
     },
     {
