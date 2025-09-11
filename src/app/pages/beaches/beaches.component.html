@@ -35,9 +35,11 @@
               </p>
             </div>
             <div>
-              <a [href]="beach.link" class="inline-block text-blue-600 font-semibold hover:text-blue-800 transition-colors">
-                Ver mais
-              </a>
+              <!-- Abre em nova aba o detalhe da praia -->
+              <a [routerLink]="['/beaches', beach.id]" target="_blank"
+              class="inline-block text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+              Ver mais
+            </a>
             </div>
           </div>
         </div>
