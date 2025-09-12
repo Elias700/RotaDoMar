@@ -1,25 +1,26 @@
-<header class="bg-blue-600 text-white p-4 shadow-lg">
+<header class="fixed top-0 w-full z-50 bg-[#37708C] text-white p-4 shadow-lg">
   <div class="container mx-auto flex items-center justify-between">
     <div class="flex items-center space-x-2">
-      
-      <div class="bg-[url('assets/logo.png')] bg-cover bg-center w-64 h-32 rounded-lg"></div>
+      <div class="bg-[url('assets/logo.png')] bg-contain bg-center bg-no-repeat w-32 h-16 md:w-56 md:h-20 cursor-pointer"></div>
     </div>
 
-    <nav class="hidden md:flex space-x-6 [&>a]:text-2xl [&>a]:cursor-pointer">
-      <a routerLink="/" class="hover:text-gray-200 transition-colors">Home</a>
-      <a routerLink="/praias" class="hover:text-gray-200 transition-colors">Praias</a>
-      <a routerLink="/mapa" class="hover:text-gray-200 transition-colors">Mapa</a>
-      <a routerLink="/previsao-do-tempo" class="hover:text-gray-200 transition-colors">Previsão do Tempo</a>
-      <a routerLink="/contato" class="hover:text-gray-200 transition-colors">Contato</a>
+    <nav class="flex">
+      <ul class="flex gap-5 [&>li]:text-2xl">
+        <li><a routerLink="/" class="hover:text-gray-200 transition-colors">Home</a></li>
+        <li><a routerLink="/praias" class="hover:text-gray-200 transition-colors">Praias</a></li>
+        <li><a routerLink="/mapa" class="hover:text-gray-200 transition-colors">Mapa</a></li>
+        <li><a routerLink="/previsao-do-tempo" class="hover:text-gray-200 transition-colors">Previsão do Tempo</a></li>
+        <li><a routerLink="/contato" class="hover:text-gray-200 transition-colors">Contato</a></li>
+      </ul>
     </nav>
 
     <div class="hidden md:flex space-x-4 [&>a]:cursor-pointer">
-      <a routerLink="/login" class="bg-white text-blue-600 text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
+      <a routerLink="/login" class="bg-white text-[#37708C] text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-100 ">
         Login
       </a>
-      <a routerLink="/cadastro" class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-blue-600 transition-colors">
+      <a routerLink="/cadastro" class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:text-[#37708C] transition-colors">
         Cadastre-se
       </a>
     </div>
   </div>
-</header> 
+</header>

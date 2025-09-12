@@ -8,6 +8,7 @@ import { BeachesComponent } from './pages/beaches/beaches.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { MapComponent } from './pages/map/map.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -4,6 +4,7 @@ import { BeachesComponent } from '../beaches/beaches.component';
 import { WeatherComponent } from '../weather/weather.component';
 import { MapComponent } from '../map/map.component';
 import { ContactComponent } from '../contact/contact.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { ContactComponent } from '../contact/contact.component';
     WeatherComponent,
     MapComponent,
     ContactComponent,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
