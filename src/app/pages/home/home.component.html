@@ -1,6 +1,6 @@
 <div class="bg-gray-50 font-sans">
   <div class="relative h-[60vh] md:h-[70vh] flex flex-col items-center justify-center text-white p-4 overflow-hidden">
-
+    
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="assets/praia1.mp4" type="video/mp4">
       <source src="assets/praia1.webm" type="video/webm">
@@ -8,46 +8,96 @@
     </video>
 
     <div class="absolute inset-0 bg-black opacity-40"></div>
-
     <div class="relative z-10 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Bem-vindo ao Rota do Mar</h1>
       <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
         O PraiaFácil é o seu guia digital para descobrir e aproveitar as melhores praias da cidade.
       </p>
-      <div class="flex items-center bg-white rounded-full p-2 max-w-lg mx-auto shadow-md">
-        <svg class="h-6 w-6 text-[#37708C] mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <input type="text" placeholder="Pesquisar sua praia preferida"
-          class="w-full text-[#37708C] focus:outline-none placeholder-[#37708C]">
+
+      <div class="relative max-w-lg mx-auto">
+        <div class="flex items-center bg-white rounded-full p-2 shadow-md">
+          <svg class="h-6 w-6 text-[#37708C] mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" placeholder="Pesquisar sua praia preferida"
+            class="w-full text-[#37708C] focus:outline-none placeholder-[#37708C]"
+            [(ngModel)]="searchQuery"
+            (input)="filterBeaches()">
+        </div>
+        
+        <ul *ngIf="filteredBeaches.length > 0" class="absolute w-full mt-2 bg-[#37708C] rounded-lg shadow-lg z-20 overflow-hidden">
+          <li *ngFor="let beach of filteredBeaches "
+            (click)="goToBeachDetail(beach.id)"
+            class="px-4 py-3 cursor-pointer hover:bg-[#4682B4] transition-colors">
+            {{ beach.name }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 
   <main class="container mx-auto px-4">
     <section class="py-12 md:flex md:items-center md:space-x-8">
-      <div class="md:w-1/2 mb-6 md:mb-0">
-        <h2 class="text-3xl font-bold text-[#37708C] mb-4">Bem-vindo ao Rota do Mar</h2>
-        <p class="text-gray-600 leading-relaxed mb-6">
-          Neste site, você vai embarcar em uma jornada pelas mais deslumbrantes praias de Salvador,
-          descobrindo o que cada uma tem de especial. Nossa missão é oferecer todas as informações que
-          você precisa para planejar seu dia perfeito, seja para relaxar, se aventurar ou simplesmente
-          admirar a paisagem. Navegue por um conteúdo rico e detalhado sobre as praias mais famosas e
-          também sobre as joias escondidas da cidade.
-        </p>
-        <a href="#"
-          class="bg-[#37708C] text-white font-semibold py-2 px-6 rounded-md hover:bg-[#4682B4] transition-colors">
-          Saiba mais
-        </a>
-      </div>
-      <div
-        class="md:w-1/2 bg-[url('assets/propaganda.png')] bg-contain bg-no-repeat bg-center h-[40rem] rounded-[10px] cursor-pointer">
-      </div>
-    </section>
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#37708C] mb-4">Bem-vindo ao Rota do Mar</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Neste site, você vai embarcar em uma jornada pelas mais deslumbrantes praias de Salvador,
+            descobrindo o que cada uma tem de especial. Nossa missão é oferecer todas as informações que
+            você precisa para planejar seu dia perfeito, seja para relaxar, se aventurar ou simplesmente
+            admirar a paisagem. Navegue por um conteúdo rico e detalhado sobre as praias mais famosas e
+            também sobre as joias escondidas da cidade.
+          </p>
+          <a (click)="openModal()"
+            class="bg-[#37708C] text-white font-semibold py-2 px-6 rounded-md hover:bg-[#4682B4] transition-colors cursor-pointer">
+            Saiba mais
+          </a>
+        </div>
+        <div
+          class="md:w-1/2 bg-[url('assets/propaganda.png')] bg-contain bg-no-repeat bg-center h-[40rem] rounded-[10px] cursor-pointer">
+        </div>
+      </section>
   </main>
 </div>
-
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" (click)="closeModal()">
+    <div class="bg-white rounded-lg p-8 md:p-12 max-w-4xl mx-auto shadow-xl relative grid md:grid-cols-2 gap-8" (click)="$event.stopPropagation()">
+      <button (click)="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-50">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <div class="flex flex-col items-center justify-center">
+        <div class="bg-[url('assets/logo2.png')] bg-contain bg-center bg-no-repeat w-48 h-20 md:w-56 md:h-24 mx-auto mb-4"></div>
+        
+        <h3 class="text-2xl font-bold text-[#37708C] mb-4 md:text-3xl">Sobre o Rota do Mar</h3>
+        <p class="text-gray-700 leading-relaxed text-center mb-6">
+          Bem-vindo ao Rota do Mar, o seu guia completo para as praias de Salvador. Nossa missão é transformar sua experiência à beira-mar, oferecendo todas as informações que você precisa para planejar seu dia perfeito, desde a localização das praias até as condições do tempo.
+        </p>
+      </div>
+  
+      <div>
+        <h4 class="text-xl font-bold text-[#37708C] mb-4">Funcionalidades do Site</h4>
+        <ul class="text-gray-700 space-y-4">
+          <li>
+            <strong class="text-gray-800">Home:</strong> A página inicial serve como a porta de entrada para a sua jornada. Aqui, você encontrará um resumo das principais funcionalidades, notícias recentes e um convite para explorar tudo que o site oferece.
+          </li>
+          <li>
+            <strong class="text-gray-800">Praias:</strong> Descubra as mais belas praias de Salvador. Nesta seção, você pode explorar cada praia individualmente, com detalhes sobre as suas características, curiosidades e dicas para aproveitar ao máximo a sua visita.
+          </li>
+          <li>
+            <strong class="text-gray-800">Mapa:</strong> Navegue por um mapa interativo para encontrar a localização exata das praias e planejar sua rota. O mapa também mostra a localização de pontos de interesse próximos, como restaurantes e estacionamentos.
+          </li>
+          <li>
+            <strong class="text-gray-800">Previsão do Tempo:</strong> Prepare-se para o seu dia na praia com informações meteorológicas atualizadas. Consulte a previsão detalhada para saber o clima atual, a previsão do tempo para os próximos dias e as condições da maré, garantindo que você chegue na hora certa para o banho de mar.
+          </li>
+          <li>
+            <strong class="text-gray-800">Contato:</strong> Tem alguma dúvida ou sugestão? A seção de contato é o canal direto para falar com a nossa equipe. Use o formulário para enviar sua mensagem e nos ajudar a melhorar a plataforma para todos os amantes de praia.
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
 <app-features></app-features>
 <app-beaches></app-beaches>
 <app-weather></app-weather>

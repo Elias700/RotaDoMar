@@ -11,7 +11,8 @@ register();
   templateUrl: './beaches.component.html',
   styleUrls: ['./beaches.component.css'],
   imports: [CommonModule, RouterModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  standalone: true
 })
 export class BeachesComponent {
 
@@ -26,7 +27,7 @@ export class BeachesComponent {
       id: 2,
       name: 'Praia do Porto da Barra',
       image: 'https://images.pexels.com/photos/13733832/pexels-photo-13733832.jpeg',
-      description: 'Conhecida por seu pôr do sol espetacular e águas tranquilas. Um ponto de encontro popular entre locais e turistas.'
+      description: 'Conhecida por seu pôr do sol espetacular e águas tranquilas e prazerosa.'
     },
     {
       id: 3,
@@ -74,7 +75,7 @@ export class BeachesComponent {
       id: 10,
       name: 'Praia de Piatã',
       image: 'https://www.guiaviagensbrasil.com/imagens/foto-praia-pieta-salvador-bahia-brasil-9425.jpg',
-      description: 'Com extensa faixa de areia, é uma das praias mais frequentadas, com infraestrutura completa de quiosques e bares.'
+      description: 'Com extensa faixa de areia, é uma das praias mais frequentadas de Salvador, ponto importante.'
     },
     {
       id: 11,
@@ -90,7 +91,7 @@ export class BeachesComponent {
     },
     {
       id: 13,
-      name: 'Praia de São Tomé de Paripe',
+      name: 'São Tomé de Paripe',
       image: 'https://s2-g1.glbimg.com/ciezn2_RS4XMqH6qAoBhfyvmlEc=/0x0:1700x1065/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/L/0/EtDyqaTXyIRnxxBzFbbw/img-6130.jpg',
       description: 'Uma praia mais afastada, com águas calmas e ideal para famílias com crianças.'
     },
@@ -116,7 +117,7 @@ export class BeachesComponent {
       id: 17,
       name: 'Praia de Pituaçu',
       image: 'https://static.wixstatic.com/media/954288_c0ea959ada884f9aaedc9b548d956d86~mv2.jpg/v1/fill/w_699,h_393,al_c,lg_1,q_80,enc_auto/954288_c0ea959ada884f9aaedc9b548d956d86~mv2.jpg',
-      description: 'Localizada próxima ao Parque de Pituaçu, é uma praia mais urbanizada, com uma orla ideal para passeios de bicicleta e caminhadas.'
+      description: 'Localizada próxima ao Parque de Pituaçu, é uma praia mais urbanizada de Salvador e visitada.'
     },
     {
       id: 18,
@@ -126,7 +127,7 @@ export class BeachesComponent {
     },
     {
       id: 19,
-      name: 'Praia da Paciência (Rio Vermelho)',
+      name: 'Praia da Paciência',
       image: 'https://www.salvadordabahia.com/wp-content/uploads/2017/12/cultural-rio-vermelho-07-12-20.jpg',
       description: 'Pequena e charmosa, é um local de refúgio e calmaria, ideal para quem busca um lugar mais tranquilo.'
     },
