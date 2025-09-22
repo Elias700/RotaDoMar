@@ -1,11 +1,9 @@
-// src/app/pages/home/home.component.ts
-
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { BeachesComponent } from '../beaches/beaches.component';
 import { FormsModule } from '@angular/forms';
 import { FeaturesComponent } from '../../components/features/features.component';
+import { BeachesComponent } from '../beaches/beaches.component';
 import { WeatherComponent } from '../weather/weather.component';
 import { MapComponent } from '../map/map.component';
 import { ContactComponent } from '../contact/contact.component';
@@ -16,29 +14,36 @@ import { ContactComponent } from '../contact/contact.component';
   styleUrls: ['./home.component.css'],
   standalone: true,
   imports: [
-    CommonModule, 
-    RouterModule, 
+    CommonModule,
+    RouterModule,
     FormsModule,
-    FeaturesComponent,  // Importe aqui
-    BeachesComponent,   // Importe aqui
-    WeatherComponent,   // Importe aqui
-    MapComponent,       // Importe aqui
-    ContactComponent    // Importe aqui
+    FeaturesComponent,
+    BeachesComponent,
+    WeatherComponent,
+    MapComponent,
+    ContactComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Mantenha esta linha para o swiper-container
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent implements OnInit {
   isModalOpen = false;
+
+  allBeaches: any[] = [
+    { id: 1, name: 'Praia do Forte' },
+    { id: 2, name: 'Praia de Itapuã' },
+    { id: 3, name: 'Praia do Flamengo' },
+    { id: 4, name: 'Praia de Stella Maris' },
+    { id: 5, name: 'Praia da Barra' },
+  ];
   
-  private beachesComponent = new BeachesComponent();
-  allBeaches: any[] = [];
   filteredBeaches: any[] = [];
   searchQuery: string = '';
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.allBeaches = this.beachesComponent.beaches;
+    // Inicializa a lista de praias filtradas para exibir todas as praias ao carregar
+    this.filteredBeaches = [];
   }
 
   openModal() {
@@ -53,7 +58,7 @@ export class HomeComponent implements OnInit {
     if (this.searchQuery.trim() === '') {
       this.filteredBeaches = [];
     } else {
-      this.filteredBeaches = this.allBeaches.filter(beach => 
+      this.filteredBeaches = this.allBeaches.filter(beach =>
         beach.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     }

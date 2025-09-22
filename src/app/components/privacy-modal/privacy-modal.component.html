@@ -1,0 +1,98 @@
+<div
+  role="dialog"
+  aria-modal="true"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+  (click)="closeModal()"
+>
+  <div
+    class="bg-white rounded-lg p-8 md:p-12 max-w-4xl w-full mx-auto shadow-xl overflow-y-auto max-h-[90vh] relative"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      (click)="closeModal()"
+      aria-label="Fechar modal"
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-50"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+
+    <div class="text-gray-800">
+      <h2 class="text-3xl font-bold text-[#37708C] mb-4">
+        Termos de Privacidade do Rota do Mar
+      </h2>
+      <p class="text-sm text-gray-500 mb-6">Última atualização: 22 de setembro de 2025</p>
+
+      <p class="leading-relaxed mb-4">
+        Bem-vindo ao Rota do Mar. A sua privacidade é de extrema importância para nós. Esta
+        política descreve como coletamos, usamos e protegemos suas informações pessoais ao
+        utilizar nosso site.
+      </p>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">1. Coleta de Informações</h3>
+      <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+        <li>
+          <strong>Informações de Contato:</strong> Coletamos nome e e-mail do formulário de
+          contato para responder dúvidas.
+        </li>
+        <li>
+          <strong>Informações de Uso:</strong> Coletamos dados de interação com o site,
+          páginas visitadas e funcionalidades usadas.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">2. Uso das Informações</h3>
+      <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+        <li><strong>Serviço:</strong> Permitir acesso às funcionalidades do site.</li>
+        <li>
+          <strong>Experiência do Usuário:</strong> Melhorar design, navegação e conteúdo.
+        </li>
+        <li><strong>Comunicação:</strong> Enviar novidades caso o usuário opte.</li>
+        <li>
+          <strong>Suporte:</strong> Responder solicitações do formulário de contato.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">
+        3. Compartilhamento de Informações
+      </h3>
+      <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+        <li>
+          <strong>Provedores:</strong> Serviços de terceiros com acesso limitado e
+          confidencialidade.
+        </li>
+        <li>
+          <strong>Requisitos Legais:</strong> Divulgação se exigido por lei ou processo
+          legal.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">4. Segurança</h3>
+      <p class="leading-relaxed mb-4">
+        Protegemos suas informações, mas nenhum método online é 100% seguro.
+      </p>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">5. Seus Direitos</h3>
+      <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+        <li>Acessar informações pessoais</li>
+        <li>Corrigir informações imprecisas</li>
+        <li>Retirar consentimento de recebimento de e-mails</li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-gray-700 mt-6 mb-2">6. Alterações</h3>
+      <p class="leading-relaxed mb-4">
+        Atualizamos a política periodicamente. A versão mais recente estará nesta página.
+      </p>
+
+      <p class="leading-relaxed font-bold">
+        Ao utilizar o site, você concorda com a política. Obrigado pela confiança!
+      </p>
+    </div>
+  </div>
+</div>
