@@ -1,10 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes)
-  ]
-});
+// 👇 importa o suporte ao locale pt-BR
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+// 👇 registra o locale
+registerLocaleData(localePt);
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch(err => console.error(err));
