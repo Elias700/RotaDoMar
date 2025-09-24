@@ -7,6 +7,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
-    { provide: LOCALE_ID, useValue: 'pt-BR' } // 👈 define locale padrão
+    { provide: LOCALE_ID, useValue: 'pt-BR' } 
   ]
 };

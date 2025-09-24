@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./privacy-modal.component.css'],
 })
 export class PrivacyModalComponent {
-  // Emite o evento 'close' para que o componente pai (Cadastro) possa fechar o modal
+
   @Output() close = new EventEmitter<void>();
 
   closeModal() {

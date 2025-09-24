@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css'],
   standalone: true,
-  imports: [CommonModule, PrivacyModalComponent], // <--- CommonModule necessário para *ngIf
+  imports: [CommonModule, PrivacyModalComponent], 
 })
 export class CadastroComponent {
   isPrivacyModalOpen = false;

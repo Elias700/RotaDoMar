@@ -1,5 +1,3 @@
-// src/app/pages/beaches/beaches.component.ts
-
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
