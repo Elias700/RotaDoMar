@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { WeatherService, WeatherResponse } from '../../app/services/weather.service';
 
 @Component({
   selector: 'app-beach-detail',
@@ -9,22 +10,26 @@ import { CommonModule } from '@angular/common';
   templateUrl: './beach-detail.component.html',
   styleUrls: ['./beach-detail.component.css']
 })
-export class BeachDetailComponent {
+export class BeachDetailComponent implements OnInit {
   beach: any;
 
+  // mantive os dados que você tinha (até id 9 conforme seu exemplo),
+  // adicionei `city: 'Salvador'` nas duas primeiras praias para demonstrar dados dinâmicos
   beaches = [
     {
       id: 1,
       name: 'Praia Farol da Barra',
+      city: 'Salvador',
       images: ['https://images.pexels.com/photos/23228012/pexels-photo-23228012.jpeg'],
       location: 'Salvador - BA',
-      description: 'A Praia do Farol da Barra é, sem dúvida, um dos cartões-postais mais famosos de Salvador, Bahia. Sua paisagem combina a beleza natural de uma enseada de águas calmas com a imponência histórica do **Farol da Barra**, que se ergue na ponta da praia. Esse cenário não atrai apenas turistas, mas também moradores que buscam um local para relaxar e apreciar a vista. A praia, de fato, oferece diferentes experiências: a parte mais próxima ao farol tem águas um pouco mais agitadas, enquanto a enseada, conhecida como Porto da Barra, é ideal para quem prefere um banho de mar mais tranquilo, com águas cristalinas, perfeitas para nadar e praticar stand-up paddle. A orla é um ponto de encontro vibrante, com quiosques, restaurantes e bares que servem desde a tradicional água de coco até acarajés e petiscos. O movimento se estende até a noite, com a região se transformando em um polo de vida noturna. Além do banho de mar, o local oferece a oportunidade de visitar o **Museu Náutico da Bahia**, que fica dentro do forte onde o farol está construído, e de ter uma vista panorâmica da cidade e da Baía de Todos-os-Santos. O pôr do sol, em particular, é um espetáculo à parte, atraindo uma multidão para contemplar a explosão de cores no céu, tornando a Praia do Farol da Barra um lugar que encapsula a energia e a beleza da capital baiana.',
+      description: 'A Praia do Farol da Barra é, sem dúvida, um dos cartões-postais mais famosos de Salvador, Bahia. Sua paisagem combina a beleza natural de uma enseada de águas calmas com a imponência histórica do Farol da Barra...',
       weather: { temp: '28°C', condition: '☀️ Ensolarado', wind: '12 km/h', rain: '10%' },
       tide: { now: 'Baixa', next: 'Cheia às 15:00' }
     },
     {
       id: 2,
       name: 'Praia do Porto da Barra',
+      city: 'Salvador',
       images: ['https://images.pexels.com/photos/13733832/pexels-photo-13733832.jpeg'],
       location: 'Salvador - BA',
       description: 'Conhecida por seu pôr do sol espetacular e águas tranquilas. Um ponto de encontro popular entre locais e turistas.',
@@ -91,20 +96,95 @@ export class BeachDetailComponent {
       images: ['https://www.guiaviagensbrasil.com/imagens/foto-da-praia-jardim-de-alah-em-salvador-bahia-brasil-2257.jpg'],
       location: 'Pituba',
       description: 'Uma praia urbanizada, com ciclovia e calçadão, excelente para quem busca atividades ao ar livre.',
-      weather: {temp: '27°C', condition: '☁️ Nublado', wind: '12 km/h', rain: '30%'},
+      weather: { temp: '27°C', condition: '☁️ Nublado', wind: '12 km/h', rain: '30%' },
       tide: { now: 'Baixa', next: 'Cheia às 19:00' }
     }
-    
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private weatherService: WeatherService
+  ) {}
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.beach = this.beaches.find(b => b.id === id);
+
+    // Se o objeto da praia tiver a propriedade `city`, buscamos o clima dinamicamente
+    if (this.beach?.city) {
+      this.weatherService.getCurrentWeather(this.beach.city).subscribe({
+        next: (data: WeatherResponse) => {
+          // temperatura
+          const tempStr = `${Math.round(data.main.temp)}°C`;
+
+          // condição mapeada (ícone/texto)
+          const condition = this.mapWeatherIcon(data.weather[0].description);
+
+          // vento: converter m/s -> km/h (1 m/s = 3.6 km/h)
+          const windKmh = Math.round((data.wind?.speed ?? 0) * 3.6);
+          const windStr = `${windKmh} km/h`;
+
+          // chuva: heurística para exibir percentual
+          // se houver `rain["1h"]` (mm) convertemos pra uma estimativa percentual (não é exata)
+          // senão usamos `clouds.all` como fallback (percentual de nebulosidade)
+          const rainPercent = data.rain?.['1h']
+            ? Math.min(100, Math.round(data.rain['1h'] * 10)) // heurística: 0.1mm -> 1%
+            : (data.clouds?.all ?? 0);
+          const rainStr = `${rainPercent}%`;
+
+          this.beach.weather = {
+            temp: tempStr,
+            condition,
+            wind: windStr,
+            rain: rainStr
+          };
+        },
+        error: (err) => {
+          console.error('Erro ao buscar clima:', err);
+          // mantém os dados estáticos já presentes ou mensagem de erro amigável
+          this.beach.weather = {
+            temp: this.beach.weather?.temp ?? '--',
+            condition: 'Não disponível',
+            wind: this.beach.weather?.wind ?? '--',
+            rain: this.beach.weather?.rain ?? '--'
+          };
+        }
+      });
+    }
   }
 
   atualizarDados() {
-    alert('🔁 Informações atualizadas em tempo real!');
+    // recarrega apenas os dados do clima para a praia atual
+    if (this.beach?.city) {
+      this.weatherService.getCurrentWeather(this.beach.city).subscribe({
+        next: (data: WeatherResponse) => {
+          const tempStr = `${Math.round(data.main.temp)}°C`;
+          const condition = this.mapWeatherIcon(data.weather[0].description);
+          const windKmh = Math.round((data.wind?.speed ?? 0) * 3.6);
+          const windStr = `${windKmh} km/h`;
+          const rainPercent = data.rain?.['1h'] ? Math.min(100, Math.round(data.rain['1h'] * 10)) : (data.clouds?.all ?? 0);
+          const rainStr = `${rainPercent}%`;
+
+          this.beach.weather = {
+            temp: tempStr,
+            condition,
+            wind: windStr,
+            rain: rainStr
+          };
+        },
+        error: (err) => {
+          console.error('Erro ao atualizar clima:', err);
+        }
+      });
+    }
+  }
+
+  private mapWeatherIcon(description: string): string {
+    const desc = description.toLowerCase();
+    if (desc.includes('céu limpo') || desc.includes('clear') || desc.includes('sol')) return '☀️ Ensolarado';
+    if (desc.includes('nublado') || desc.includes('cloud')) return '⛅ Nublado';
+    if (desc.includes('chuva') || desc.includes('rain')) return '🌧️ Chuva';
+    if (desc.includes('neve') || desc.includes('snow')) return '❄️ Neve';
+    return description;
   }
 }

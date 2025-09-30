@@ -1,43 +1,48 @@
-<div class="max-w-5xl mx-auto p-6">
-    
-    <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-       {{ beach.name }}
-    </h1>
-  
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <img *ngFor="let img of beach.images" [src]="img" class="w-full h-64 object-cover rounded-xl shadow" />
-    </div>
-  
-    <div class="mb-8">
-      <h2 class="text-xl font-semibold text-gray-700 mb-2"> Localização</h2>
-      <div class="w-full h-72 bg-gray-200 rounded-xl shadow flex items-center justify-center text-gray-500">
-        🗺️ Mapa interativo aqui
-      </div>
-      <p class="text-gray-600 mt-2">{{ beach.location }}</p>
-    </div>
-  
-    <div class="mb-8">
-      <h2 class="text-xl font-semibold text-gray-700 mb-2"> Descrição</h2>
-      <p class="text-gray-600">{{ beach.description }}</p>
-    </div>
-  
-    <div class="mb-8 bg-blue-50 border border-blue-200 rounded-xl p-4 shadow">
-      <h2 class="text-xl font-semibold text-gray-700 mb-2">🌦️ Clima atual</h2>
-      <p class="text-gray-700">{{ beach.weather.condition }} | {{ beach.weather.temp }}</p>
-      <p class="text-gray-600">Vento: {{ beach.weather.wind }} | Chuva: {{ beach.weather.rain }}</p>
-    </div>
-  
-    <div class="mb-8 bg-green-50 border border-green-200 rounded-xl p-4 shadow">
-      <h2 class="text-xl font-semibold text-gray-700 mb-2">🌊 Maré</h2>
-      <p class="text-gray-700">Maré agora: <span class="font-bold">{{ beach.tide.now }}</span></p>
-      <p class="text-gray-600">Próxima mudança: {{ beach.tide.next }}</p>
-    </div>
+<div *ngIf="beach; else notFound" class="max-w-5xl mx-auto p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+    {{ beach.name }}
+  </h1>
 
-    <div class="flex justify-end">
-      <button (click)="atualizarDados()" class="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition">
-        🔁 Atualizar informações
-      </button>
-    </div>
-    
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <img *ngFor="let img of beach.images" [src]="img" class="w-full h-64 object-cover rounded-xl shadow" />
   </div>
-  
+
+  <div class="mb-8">
+    <h2 class="text-xl font-semibold text-gray-700 mb-2"> Localização</h2>
+    <div class="w-full h-72 bg-gray-200 rounded-xl shadow flex items-center justify-center text-gray-500">
+      🗺️ Mapa interativo aqui
+    </div>
+    <p class="text-gray-600 mt-2">{{ beach.location }}</p>
+  </div>
+
+  <div class="mb-8">
+    <h2 class="text-xl font-semibold text-gray-700 mb-2"> Descrição</h2>
+    <p class="text-gray-600">{{ beach.description }}</p>
+  </div>
+
+  <!-- CLIMA -->
+  <div class="mb-8 bg-blue-50 border border-blue-200 rounded-xl p-4 shadow">
+    <h2 class="text-xl font-semibold text-gray-700 mb-2">🌦️ Clima atual</h2>
+
+    <!-- quando ainda não há dados dinâmicos, exibimos o que tiver (estático) ou "Carregando..." -->
+    <p class="text-gray-700">
+      {{ beach.weather?.condition ?? 'Carregando...' }} | {{ beach.weather?.temp ?? '--' }}
+    </p>
+    <p class="text-gray-600">
+      Vento: {{ beach.weather?.wind ?? '--' }} | Chuva: {{ beach.weather?.rain ?? '--' }}
+    </p>
+  </div>
+
+  <!-- MARÉ -->
+  <div class="mb-8 bg-green-50 border border-green-200 rounded-xl p-4 shadow">
+    <h2 class="text-xl font-semibold text-gray-700 mb-2">🌊 Maré</h2>
+    <p class="text-gray-700">Maré agora: <span class="font-bold">{{ beach.tide?.now }}</span></p>
+    <p class="text-gray-600">Próxima mudança: {{ beach.tide?.next }}</p>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="max-w-5xl mx-auto p-6 text-center text-gray-600">
+    Praia não encontrada.
+  </div>
+</ng-template>

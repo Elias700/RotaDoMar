@@ -1,4 +1,3 @@
-
 <section class="py-12 flex justify-center items-center min-h-[80vh] cursor-pointer"> 
   <div class="md:w-1/3">
     <div class="bg-gray-100 rounded-lg shadow-lg p-6 text-center mb-8">
@@ -23,11 +22,12 @@
 
         <!-- Ícone do tempo e descrição -->
         <div class="flex justify-center items-center space-x-2">
-          <img *ngIf="iconUrl" [src]="iconUrl" alt="Ícone do tempo" />
+          @if (iconUrl) {
+            <img [src]="iconUrl" alt="Ícone do tempo" />
+          }
           <p class="text-sm text-gray-400 capitalize">{{ description }}</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
