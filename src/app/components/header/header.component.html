@@ -1,64 +1,64 @@
 <header class="fixed top-0 w-full z-50 bg-[#37708C] text-white p-4 shadow-lg 2xl:p-6">
-  <div class="container mx-auto flex items-center justify-between">
-      
-      <div class="flex items-center space-x-2">
-          <div class="bg-[url('assets/logo.png')] bg-contain bg-center bg-no-repeat w-32 h-16 md:w-56 md:h-20 2xl:w-72 2xl:h-24 cursor-pointer"></div>
-      </div>
+    <div class="container mx-auto flex items-center justify-between">
+        
+        <div class="flex items-center space-x-2">
+            <div class="bg-[url('assets/logo.png')] bg-contain bg-center bg-no-repeat w-32 h-16 md:w-56 md:h-20 2xl:w-72 2xl:h-24 cursor-pointer"></div>
+        </div>
 
-      <nav class="hidden lg:flex">
-          <ul class="flex gap-10 [&>li]:text-2xl 2xl:gap-16 2xl:[&>li]:text-3xl">
-              <li><a routerLink="/" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Home</a></li>
-              <li><a routerLink="/praias" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Praias</a></li>
-              <li><a routerLink="/mapa" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Mapa</a></li>
-              <li><a routerLink="/previsao-do-tempo" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Previsão do Tempo</a></li>
-              <li><a routerLink="/contato" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Contato</a></li>
-          </ul>
-      </nav>
-      
-      <div class="hidden lg:flex space-x-4 2xl:space-x-6 [&>a]:cursor-pointer">
-          <a routerLink="/login" class="bg-white text-[#37708C] text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-800 hover:text-white hover:transition-all hover:duration-500 2xl:text-2xl 2xl:px-6 2xl:py-3">
-              Login
-          </a>
-          <a routerLink="/cadastro" class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 hover:text-white hover:transition-all hover:duration-500 hover:border-gray-800 2xl:text-2xl 2xl:px-6 2xl:py-3">
-              Cadastre-se
-          </a>
-      </div>
+        <nav class="hidden lg:flex">
+            <ul class="flex gap-10 2xl:gap-10 2xl:[&>li]:text-2xl">
+                <li><a routerLink="/" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Home</a></li>
+                <li><a routerLink="/praias" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Praias</a></li>
+                <li><a routerLink="/mapa" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Mapa</a></li>
+                <li><a routerLink="/previsao-do-tempo" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Previsão do Tempo</a></li>
+                <li><a routerLink="/contato" class="transition-all duration-500 hover:text-gray-800 hover:underline hover:underline-offset-[15px] 2xl:hover:underline-offset-[20px]">Contato</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hidden lg:flex space-x-4 2xl:space-x-6 [&>a]:cursor-pointer">
+            <a routerLink="/login" class="bg-white text-[#37708C] text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-800 hover:text-white hover:transition-all hover:duration-500 2xl:text-2xl 2xl:px-6 2xl:py-3">
+                Login
+            </a>
+            <a routerLink="/cadastro" class="bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 hover:text-white hover:transition-all hover:duration-500 hover:border-gray-800 2xl:text-2xl 2xl:px-6 2xl:py-3">
+                Cadastre-se
+            </a>
+        </div>
 
-      <button 
-          (click)="toggleMenu()" 
-          class="text-white lg:hidden focus:outline-none"
-          aria-label="Toggle navigation"
-      >
-          <svg *ngIf="!isMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-          <svg *ngIf="isMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-      </button>
+        <button 
+            (click)="toggleMenu()" 
+            class="text-white lg:hidden focus:outline-none"
+            aria-label="Toggle navigation"
+        >
+            <svg *ngIf="!isMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            <svg *ngIf="isMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
-  </div>
+    </div>
 
-  <div 
-      *ngIf="isMenuOpen" 
-      class="lg:hidden absolute top-[65px] left-0 w-full bg-[#37708C] shadow-lg p-4 transition-all duration-300 ease-in-out"
-      style="min-height: calc(100vh - 65px);"
-  >
-      <ul class="flex flex-col items-center gap-6 text-xl pb-6 border-b border-white/50 mb-6">
-          <li><a routerLink="/" (click)="toggleMenu()" class="hover:text-gray-200">Home</a></li>
-          <li><a routerLink="/praias" (click)="toggleMenu()" class="hover:text-gray-200">Praias</a></li>
-          <li><a routerLink="/mapa" (click)="toggleMenu()" class="hover:text-gray-200">Mapa</a></li>
-          <li><a routerLink="/previsao-do-tempo" (click)="toggleMenu()" class="hover:text-gray-200">Previsão do Tempo</a></li>
-          <li><a routerLink="/contato" (click)="toggleMenu()" class="hover:text-gray-200">Contato</a></li>
-      </ul>
-      
-      <div class="flex flex-col items-center space-y-4">
-          <a routerLink="/login" (click)="toggleMenu()" class="w-full text-center bg-white text-[#37708C] text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-500">
-              Login
-          </a>
-          <a routerLink="/cadastro" (click)="toggleMenu()" class="w-full text-center bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-all duration-500">
-              Cadastre-se
-          </a>
-      </div>
-  </div>
+    <div 
+        *ngIf="isMenuOpen" 
+        class="lg:hidden absolute top-[65px] left-0 w-full bg-[#37708C] shadow-lg p-4 transition-all duration-300 ease-in-out"
+        style="min-height: calc(100vh - 65px);"
+    >
+        <ul class="flex flex-col items-center gap-6 text-xl pb-6 border-b border-white/50 mb-6">
+            <li><a routerLink="/" (click)="toggleMenu()" class="hover:text-gray-200">Home</a></li>
+            <li><a routerLink="/praias" (click)="toggleMenu()" class="hover:text-gray-200">Praias</a></li>
+            <li><a routerLink="/mapa" (click)="toggleMenu()" class="hover:text-gray-200">Mapa</a></li>
+            <li><a routerLink="/previsao-do-tempo" (click)="toggleMenu()" class="hover:text-gray-200">Previsão do Tempo</a></li>
+            <li><a routerLink="/contato" (click)="toggleMenu()" class="hover:text-gray-200">Contato</a></li>
+        </ul>
+        
+        <div class="flex flex-col items-center space-y-4">
+            <a routerLink="/login" (click)="toggleMenu()" class="w-full text-center bg-white text-[#37708C] text-xl font-semibold px-4 py-2 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-500">
+                Login
+            </a>
+            <a routerLink="/cadastro" (click)="toggleMenu()" class="w-full text-center bg-transparent text-xl border border-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-all duration-500">
+                Cadastre-se
+            </a>
+        </div>
+    </div>
 </header>

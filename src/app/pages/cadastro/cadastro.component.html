@@ -1,45 +1,112 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
   <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-    <h2 class="text-3xl font-bold text-center text-[#37708C] mb-6">Cadastro</h2>
+      <h2 class="text-3xl font-bold text-center text-[#37708C] mb-8">Cadastro</h2>
 
-    <form class="space-y-5">
+      <form class="space-y-6">
 
-      <label for="nome" class="block text-gray-700 font-medium">Nome</label>
-      <input type="text" placeholder="Nome" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#37708C]" />
-    
-      <label for="email" class="block text-gray-700 font-medium">Email</label>
-      <input type="email" placeholder="E-mail" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#37708C]" />
-    
-      <label for="password" class="block text-gray-700 font-medium">Senha</label>
-      <input type="password" placeholder="Digite sua senha" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#37708C]" />
-    
-      <label for="confirm" class="block text-gray-700 font-medium">Confirmar</label>
-      <input type="password" placeholder="Confirme sua senha" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#37708C]" />
+          <div class="relative">
+              <input required="" type="text" id="nome" name="nome" autocomplete="off" 
+                  class="peer w-full px-4 pt-5 pb-3 bg-white border border-gray-500 rounded-xl 
+                         text-gray-800 focus:outline-none focus:border-[#4682B4] focus:ring-1 focus:ring-[#4682B4] 
+                         transition-all duration-300"
+              />
+              <label for="nome" 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none 
+                         transition-all duration-300 
+                         
+                         peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-1/2 peer-focus:scale-90 peer-focus:px-1 
+                         peer-focus:bg-white peer-focus:text-[#4682B4]
+                         
+                         peer-valid:top-0 peer-valid:text-xs peer-valid:-translate-y-1/2 peer-valid:scale-90 peer-valid:px-1 
+                         peer-valid:bg-white peer-valid:text-[#4682B4]"
+              >
+                  Nome
+              </label>
+          </div>
+          
+          <div class="relative">
+              <input required="" type="email" id="email" name="email" autocomplete="off" 
+                  class="peer w-full px-4 pt-5 pb-3 bg-white border border-gray-500 rounded-xl 
+                         text-gray-800 focus:outline-none focus:border-[#4682B4] focus:ring-1 focus:ring-[#4682B4] 
+                         transition-all duration-300"
+              />
+              <label for="email" 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none 
+                         transition-all duration-300 
+                         
+                         peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-1/2 peer-focus:scale-90 peer-focus:px-1 
+                         peer-focus:bg-white peer-focus:text-[#4682B4]
+                         
+                         peer-valid:top-0 peer-valid:text-xs peer-valid:-translate-y-1/2 peer-valid:scale-90 peer-valid:px-1 
+                         peer-valid:bg-white peer-valid:text-[#4682B4]"
+              >
+                Email
+              </label>
+          </div>
+          
+          <div class="relative">
+              <input required="" type="password" id="password" name="password" 
+                  class="peer w-full px-4 pt-5 pb-3 bg-white border border-gray-500 rounded-xl 
+                         text-gray-800 focus:outline-none focus:border-[#4682B4] focus:ring-1 focus:ring-[#4682B4] 
+                         transition-all duration-300"
+              />
+              <label for="password" 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none 
+                         transition-all duration-300 
+                         
+                         peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-1/2 peer-focus:scale-90 peer-focus:px-1 
+                         peer-focus:bg-white peer-focus:text-[#4682B4]
+                         
+                         peer-valid:top-0 peer-valid:text-xs peer-valid:-translate-y-1/2 peer-valid:scale-90 peer-valid:px-1 
+                         peer-valid:bg-white peer-valid:text-[#4682B4]"
+              >
+                Senha
+              </label>
+          </div>
+         
+          <div class="relative">
+              <input required="" type="password" id="confirm" name="confirm" 
+                  class="peer w-full px-4 pt-5 pb-3 bg-white border border-gray-500 rounded-xl 
+                         text-gray-800 focus:outline-none focus:border-[#4682B4] focus:ring-1 focus:ring-[#4682B4] 
+                         transition-all duration-300"
+              />
+              <label for="confirm" 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none 
+                         transition-all duration-300 
+                         
+                         peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-1/2 peer-focus:scale-90 peer-focus:px-1 
+                         peer-focus:bg-white peer-focus:text-[#4682B4]
+                         
+                         peer-valid:top-0 peer-valid:text-xs peer-valid:-translate-y-1/2 peer-valid:scale-90 peer-valid:px-1 
+                         peer-valid:bg-white peer-valid:text-[#4682B4]"
+              >
+                Confirmar Senha
+              </label>
+          </div>
 
-      <div class="flex flex-col space-y-2">
-        <div class="flex items-center">
-          <input type="checkbox" id="terms" class="h-4 w-4 text-[#37708C] border-gray-300 rounded focus:ring-[#37708C]" />
-          <label  for="terms" class="ml-2 block text-sm text-gray-900">
-            Li e concordo com os
-            <a href="#" aria-required="true" (click)="openPrivacyModal(); $event.preventDefault()" class="text-[#37708C] hover:underline cursor-pointer">
-              termos de privacidade
-            </a>.
-          </label>
-        </div>
-      
-        <div class="text-sm text-gray-600">
-          Já tem conta?
-          <a href="/login" class="text-[#37708C] hover:underline ml-1">
-            Acessar
-          </a>
-        </div>
-      </div>
-      
-
-      <button type="submit" class="w-full bg-[#37708C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#4682B4] transition-colors">
-        Criar conta
-      </button>
-    </form>
+          <div class="flex flex-col space-y-2 pt-2">
+              <div class="flex items-center">
+                  <input type="checkbox" id="terms" class="h-4 w-4 text-[#37708C] border-gray-300 rounded focus:ring-[#37708C]" />
+                  <label for="terms" class="ml-2 block text-sm text-gray-900">
+                      Li e concordo com os
+                      <a href="#" aria-required="true" (click)="openPrivacyModal(); $event.preventDefault()" class="text-[#37708C] hover:underline cursor-pointer font-medium">
+                          termos de privacidade
+                      </a>.
+                  </label>
+              </div>
+          
+              <div class="text-sm text-gray-600">
+                  Já tem conta?
+                  <a href="/login" class="text-[#37708C] hover:underline ml-1 font-medium">
+                    Acessar
+                  </a>
+              </div>
+          </div>
+          
+          <button type="submit" class="w-full bg-[#37708C] text-white font-semibold py-3 px-4 rounded-xl hover:bg-[#4682B4] transition-colors shadow-md">
+            Criar conta
+          </button>
+      </form>
   </div>
 </div>
 
