@@ -1,46 +1,36 @@
 <section class="py-12 text-center h-[80vh] flex flex-col justify-center">
   <h2 class="text-3xl font-bold text-[#37708C] mb-8">Praias</h2>
 
-  <div class="container mx-auto">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24"> 
+    
     <swiper-container
       class="mySwiper"
       slides-per-view="1"
-      space-between="30"
+      space-between="20" 
       pagination="true"
-      [breakpoints]="{
-        '640': {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        '768': {
-          slidesPerView: 3,
-          spaceBetween: 30
-        },
-        '1024': {
-          slidesPerView: 4,
-          spaceBetween: 40
-        }
-      }"
-    >
+      [breakpoints]="swiperBreakpoints" >
       <swiper-slide *ngFor="let beach of beaches">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] h-auto">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-full h-full"> 
+          
           <div>
-            <img [src]="beach.image" [alt]="'Praia ' + beach.name" class="w-full h-48 object-cover">
+            <img [src]="beach.image" [alt]="'Praia ' + beach.name" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
           </div>
-          <div class="p-6">
+          
+          <div class="p-4 sm:p-6 flex flex-col justify-between flex-grow"> 
             <div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 whitespace-normal">{{ beach.name }}</h3>
-              <p class="text-sm text-gray-600 leading-snug mb-4 whitespace-normal">
+              <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 whitespace-normal">{{ beach.name }}</h3>
+              <p class="text-sm lg:text-base text-gray-600 leading-snug mb-4 whitespace-normal">
                 {{ beach.description }}
               </p>
             </div>
-            <div>
-              <button class=" p-2 rounded-2xl bg-[#37708C] hover:bg-[#4682B4] transition duration-[500ms] "> 
+            
+            <div class="mt-auto"> 
+              <button class="p-2 rounded-2xl bg-[#37708C] hover:bg-[#4682B4] transition duration-[500ms] w-full text-center"> 
                 <a [routerLink]="['/beaches', beach.id]" target="_blank"
                 class="inline-block text-white font-semibold transition-colors">
                 Ver mais
                 </a>
-            </button>
+              </button>
             </div>
           </div>
         </div>

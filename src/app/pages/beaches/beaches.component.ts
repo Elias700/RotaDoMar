@@ -1,7 +1,10 @@
+// beaches.component.ts
+
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { RouterModule } from '@angular/router';
+
 register();
 
 @Component({
@@ -14,7 +17,37 @@ register();
 })
 export class BeachesComponent {
 
+  // *** CONFIGURAÇÃO DE BREAKPOINTS AJUSTADA PARA O DESKTOP ***
+  public swiperBreakpoints = {
+    // Celulares pequenos/médios
+    '640': {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    // Tablets (MD)
+    '768': {
+      slidesPerView: 3,
+      spaceBetween: 40
+    },
+    // Desktop Padrão (LG): Mostrar 4 cards, bom espaçamento.
+    '1024': {
+      slidesPerView: 4,
+      spaceBetween: 60 
+    },
+    // Desktop Grande / Data Show (XL): Reduzir para 3 cards para torná-los GRANDES e LEGAIS.
+    '1280': { 
+      slidesPerView: 3, 
+      spaceBetween: 80 // Aumentamos muito o espaço para separá-los
+    },
+    // Telas Ultra-Grandes/TVs (2XL)
+    '1920': {
+      slidesPerView: 4, // 4 slides agora ficam enormes nessa resolução
+      spaceBetween: 100 // Espaçamento massivo
+    }
+  };
+
   beaches = [
+    // Seus dados de praias (mantidos inalterados)
     {
       id: 1,
       name: 'Praia Farol da Barra',
@@ -136,5 +169,4 @@ export class BeachesComponent {
       description: 'Um paraíso de águas cristalinas e tranquilas. É ideal para mergulho e para quem busca contato com a natureza em um ambiente mais reservado.'
     }
   ];
-
 }
