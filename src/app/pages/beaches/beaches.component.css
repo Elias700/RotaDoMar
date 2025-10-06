@@ -1,0 +1,16 @@
+/* Espaço extra para a paginação não ficar sobre os cards */
+.mySwiper {
+  padding-bottom: 28px; /* cria área para a paginação */
+  --swiper-pagination-bottom: 6px; /* posiciona os bullets na área de padding */
+}
+
+/* Opcional: melhora o clique no botão sem sobreposição visual */
+.mySwiper::part(pagination) {
+  z-index: 0;
+}
+
+/* Garante que sombras/partes inferiores do card não sejam cortadas visualmente */
+swiper-container.mySwiper {
+  overflow: visible;
+}
+

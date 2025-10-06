@@ -14,16 +14,16 @@
     >
       <swiper-slide
         *ngFor="let beach of beaches"
-        class="flex justify-center"
+        class="flex justify-center pb-8"
       >
         <div
-          class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[320px] xl:w-[360px] 2xl:w-[380px]"
+          class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[400px] xl:w-[460px] 2xl:w-[520px]"
         >
           <div>
             <img
               [src]="beach.image"
               [alt]="'Praia ' + beach.name"
-              class="w-full h-48 sm:h-52 lg:h-56 object-cover"
+              class="w-full h-48 sm:h-52 lg:h-56 xl:h-64 2xl:h-72 object-cover"
             />
           </div>
 

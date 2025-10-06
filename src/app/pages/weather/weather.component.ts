@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { WeatherService } from '../../app/services/weather.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-weather',
   standalone: true,
-  imports: [DatePipe],
+  imports: [CommonModule, DatePipe],
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css']
 })
@@ -14,7 +15,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
   city: string = 'Salvador';
   temp: number | null = null;
   description: string = '';
-  iconUrl: string = '';
+  iconUrl: string = 'https://openweathermap.org/img/wn/01d@2x.png';
 
   private intervalId: any;
 
@@ -31,14 +32,15 @@ export class WeatherComponent implements OnInit, OnDestroy {
       (data: any) => {
         this.temp = Math.round(data.main.temp);
         this.description = data.weather[0].description;
-        this.iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        const code = data?.weather?.[0]?.icon || '01d';
+        this.iconUrl = `https://openweathermap.org/img/wn/${code}@2x.png`;
       },
       (err: any) => {
         console.error('Erro ao carregar previsão:', err);
         // fallback em caso de erro
         this.temp = 29;
         this.description = 'ensolarado';
-        this.iconUrl = 'https://openweathermap.org/img/wn/01d.png';
+        this.iconUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
       }
     );
   }
@@ -48,5 +50,10 @@ export class WeatherComponent implements OnInit, OnDestroy {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
+  }
+
+  onIconError(): void {
+    // Garante um fallback visual caso a URL da API não carregue
+    this.iconUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
   }
 }

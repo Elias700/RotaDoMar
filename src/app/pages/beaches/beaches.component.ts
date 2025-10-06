@@ -68,7 +68,7 @@ export class BeachesComponent {
     },
     {
       id: 4,
-      name: 'Praia de Itapoã',
+      name: 'Praia de Itapuã',
       image: 'https://images.pexels.com/photos/23605138/pexels-photo-23605138.jpeg',
       description: 'Cenário de canções e poemas, é uma praia com coqueiros e areia clara, ideal para relaxar e aproveitar a paisagem.'
     },
