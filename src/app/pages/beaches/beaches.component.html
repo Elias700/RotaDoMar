@@ -3,7 +3,8 @@
 >
   <h2 class="text-3xl font-bold text-[#37708C] mb-8">Praias</h2>
 
-  <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
+  <!-- Centralização e limite máximo -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 max-w-[1400px]">
     <swiper-container
       class="mySwiper"
       slides-per-view="1"
@@ -11,9 +12,12 @@
       pagination="true"
       [breakpoints]="swiperBreakpoints"
     >
-      <swiper-slide *ngFor="let beach of beaches">
+      <swiper-slide
+        *ngFor="let beach of beaches"
+        class="flex justify-center"
+      >
         <div
-          class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-full h-full"
+          class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[320px] xl:w-[360px] 2xl:w-[380px]"
         >
           <div>
             <img

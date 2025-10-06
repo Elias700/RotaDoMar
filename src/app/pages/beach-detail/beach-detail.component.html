@@ -3,28 +3,47 @@
     {{ beach.name }}
   </h1>
 
+  <!-- Imagens -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
     <img *ngFor="let img of beach.images" [src]="img" class="w-full h-64 object-cover rounded-xl shadow" />
   </div>
 
+  <!-- Localização -->
   <div class="mb-8">
-    <h2 class="text-xl font-semibold text-gray-700 mb-2"> Localização</h2>
-    <div class="w-full h-72 bg-gray-200 rounded-xl shadow flex items-center justify-center text-gray-500">
-      🗺️ Mapa interativo aqui
+    <h2 class="text-xl font-semibold text-gray-700 mb-2">Localização</h2>
+
+    <!-- Exibe mapa apenas para Farol da Barra -->
+    <div *ngIf="beach.id === 1; else noMap" class="w-full h-72 rounded-xl shadow overflow-hidden">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4828.880018734409!2d-38.53102882405448!3d-13.010163537308774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x716039d12f99a17%3A0xb9f1c65d3b6b7e57!2sPraia%20do%20Farol%20da%20Barra!5e1!3m2!1spt-BR!2sbr!4v1759759437887!5m2!1spt-BR!2sbr"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
-    <p class="text-gray-600 mt-2">{{ beach.location }}</p>
+
+    <!-- Caso seja outra praia -->
+    <ng-template #noMap>
+      <div class="w-full h-72 bg-gray-200 rounded-xl shadow flex items-center justify-center text-gray-500">
+        🗺️ Mapa ainda não disponível para esta praia
+      </div>
+    </ng-template>
+
+    
   </div>
 
+  <!-- Descrição -->
   <div class="mb-8">
-    <h2 class="text-xl font-semibold text-gray-700 mb-2"> Descrição</h2>
+    <h2 class="text-xl font-semibold text-gray-700 mb-2">Descrição</h2>
     <p class="text-gray-600">{{ beach.description }}</p>
   </div>
 
-  <!-- CLIMA -->
+  <!-- Clima -->
   <div class="mb-8 bg-blue-50 border border-blue-200 rounded-xl p-4 shadow">
     <h2 class="text-xl font-semibold text-gray-700 mb-2">🌦️ Clima atual</h2>
-
-    <!-- quando ainda não há dados dinâmicos, exibimos o que tiver (estático) ou "Carregando..." -->
     <p class="text-gray-700">
       {{ beach.weather?.condition ?? 'Carregando...' }} | {{ beach.weather?.temp ?? '--' }}
     </p>
@@ -33,7 +52,7 @@
     </p>
   </div>
 
-  <!-- MARÉ -->
+  <!-- Maré -->
   <div class="mb-8 bg-green-50 border border-green-200 rounded-xl p-4 shadow">
     <h2 class="text-xl font-semibold text-gray-700 mb-2">🌊 Maré</h2>
     <p class="text-gray-700">Maré agora: <span class="font-bold">{{ beach.tide?.now }}</span></p>
